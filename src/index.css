@@ -51,5 +51,5 @@ body {
     border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: #40ffff;
+    background: aqua;
 }

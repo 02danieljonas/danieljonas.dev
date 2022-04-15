@@ -1,10 +1,16 @@
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
     return (
         <div className="App">
-            <Navbar />
+            <Navbar sectionId={["section1", "section2", "section3"]}/>
+            <section>
+                lorem
+
+
+            </section>
         </div>
+        
     );
 }
 
