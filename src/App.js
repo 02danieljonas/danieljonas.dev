@@ -6,12 +6,16 @@ function App() {
         document.title = "Daniel's Website";
     }, []);
 
-    const refList = [];
-    refList.push(useRef(null)); //copy paste this for every new section
+    const refList = []; //maybe I should pass this down to the sections who pass it down the Section.jsx
+    refList.push(useRef(null)); //push a new one for every section
+    refList.push(useRef(null)); //can't use useRef inside of a loop :(
+    refList.push(useRef(null)); //making a custom section would solve my issue
     refList.push(useRef(null));
-    refList.push(useRef(null));
-    refList.push(useRef(null));
+    // I should format the sections
+    // a seperate file for each section
+    // pass  the info into a template that create all the  need info for the section
 
+    
     const sections = [
         <section
             name="Home"
@@ -20,9 +24,10 @@ function App() {
             style={{
                 position: "absolute",
                 top: 0,
+                zIndex:0,
             }}
         >
-            Home
+            Home-Hook
         </section>,
         <section name="About" key="1" ref={refList[1]}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
@@ -65,8 +70,8 @@ function App() {
         </section>,
     ];
 
+
     const scrollToRef = (target) => {
-        console.log(target.target.id);
         window.scrollTo({
             top: refList[target.target.id].current.offsetTop,
             behavior: "smooth",

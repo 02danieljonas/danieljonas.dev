@@ -6,7 +6,7 @@ const NavbarElement = ({ sections, onClick }) => {
             {sections.map(function ({ name, key }) {
                 // console.log(data.name)
                 return (
-                    <div name={name} id={key} onClick={onClick}>
+                    <div name={name} id={key} key={key} onClick={onClick}>
                         {name}
                     </div>
                 );
