@@ -1,7 +1,11 @@
 import Navbar from "./components/Navbar";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 
 function App() {
+    useEffect(() => {
+        document.title = "Daniel's Website";
+    }, []);
+
     const refList = [];
     refList.push(useRef(null)); //copy paste this for every new section
     refList.push(useRef(null));
@@ -9,13 +13,18 @@ function App() {
     refList.push(useRef(null));
 
     const sections = [
-        <section key="Home0" ref={refList[0]}style={{
-            position: "absolute",
-            top: 0
-        }}>
+        <section
+            name="Home"
+            key="0"
+            ref={refList[0]}
+            style={{
+                position: "absolute",
+                top: 0,
+            }}
+        >
             Home
         </section>,
-        <section key="About1" ref={refList[1]}>
+        <section name="About" key="1" ref={refList[1]}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
             ipsum libero, pretium eget est in, fermentum blandit mi. Curabitur
             luctus feugiat luctus. Morbi vitae lorem ultricies, elementum elit
@@ -29,7 +38,7 @@ function App() {
             aliquet. Praesent congue laoreet ex. Mauris interdum malesuada orci
             eu feugiat. Sed rutrum tempus ex sit amet efficitur.
         </section>,
-        <section key="section2" ref={refList[2]}>
+        <section name="section" key="2" ref={refList[2]}>
             Ut suscipit dui ac risus sagittis, a venenatis dui faucibus.
             Pellentesque sit amet aliquam metus, ut hendrerit augue. Donec
             consequat id risus in fermentum. Sed mollis, odio in viverra
@@ -41,7 +50,7 @@ function App() {
             scelerisque elementum, elit nisl euismod libero, eget finibus urna
             augue eu felis. Ut suscipit volutpat dapibus.
         </section>,
-        <section key="section3" ref={refList[3]}>
+        <section name="section" key="3" ref={refList[3]}>
             Etiam vitae fringilla felis, sed blandit dolor. In aliquet risus
             felis, non tempor dolor gravida non. Duis eu elit maximus, lobortis
             nibh ut, commodo purus. Praesent condimentum est velit, in faucibus
@@ -57,20 +66,18 @@ function App() {
     ];
 
     const scrollToRef = (target) => {
+        console.log(target.target.id);
         window.scrollTo({
-            top: refList[target.target.id.slice(-1)].current.offsetTop,
+            top: refList[target.target.id].current.offsetTop,
             behavior: "smooth",
         });
     };
-
     return (
         <div className="App">
             <Navbar
-                sections={
-                    sections.map((e) => {
-                        return {key: e.key, ref: e.ref};
-                    })
-                }
+                sections={sections.map(({ key, ref, props }) => {
+                    return { key: key, ref: ref, name: props.name };
+                })}
                 onClick={scrollToRef}
             />
             <main style={{ paddingTop: window.visualViewport.height }}>
