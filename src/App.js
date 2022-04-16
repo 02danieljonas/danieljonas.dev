@@ -6,9 +6,16 @@ function App() {
     refList.push(useRef(null)); //copy paste this for every new section
     refList.push(useRef(null));
     refList.push(useRef(null));
+    refList.push(useRef(null));
 
     const sections = [
-        <section key="section0" ref={refList[0]}>
+        <section key="Home0" ref={refList[0]}style={{
+            position: "absolute",
+            top: 0
+        }}>
+            Home
+        </section>,
+        <section key="About1" ref={refList[1]}>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
             ipsum libero, pretium eget est in, fermentum blandit mi. Curabitur
             luctus feugiat luctus. Morbi vitae lorem ultricies, elementum elit
@@ -22,7 +29,7 @@ function App() {
             aliquet. Praesent congue laoreet ex. Mauris interdum malesuada orci
             eu feugiat. Sed rutrum tempus ex sit amet efficitur.
         </section>,
-        <section key="section1" ref={refList[1]}>
+        <section key="section2" ref={refList[2]}>
             Ut suscipit dui ac risus sagittis, a venenatis dui faucibus.
             Pellentesque sit amet aliquam metus, ut hendrerit augue. Donec
             consequat id risus in fermentum. Sed mollis, odio in viverra
@@ -34,7 +41,7 @@ function App() {
             scelerisque elementum, elit nisl euismod libero, eget finibus urna
             augue eu felis. Ut suscipit volutpat dapibus.
         </section>,
-        <section key="section2" ref={refList[2]}>
+        <section key="section3" ref={refList[3]}>
             Etiam vitae fringilla felis, sed blandit dolor. In aliquet risus
             felis, non tempor dolor gravida non. Duis eu elit maximus, lobortis
             nibh ut, commodo purus. Praesent condimentum est velit, in faucibus
@@ -48,8 +55,6 @@ function App() {
             et sagittis dignissim.
         </section>,
     ];
-    console.log(sections[1].key);
-    console.log();
 
     const scrollToRef = (target) => {
         window.scrollTo({
@@ -65,8 +70,6 @@ function App() {
                     sections.map((e) => {
                         return {key: e.key, ref: e.ref};
                     })
-                    //should have a for each loop (or maybe a map)
-                    //that only returns the key and ref
                 }
                 onClick={scrollToRef}
             />

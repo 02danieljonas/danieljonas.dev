@@ -6,8 +6,7 @@ const NavbarElement = ({ sections, onClick }) => {
             {sections.map(function (data) {
                 return (
                     <div key={data.key} id={data.key} onClick={onClick}>
-                        {" "}
-                        {data.key}{" "}
+                        {data.key.slice(0, -1)}
                     </div>
                 );
             })}
