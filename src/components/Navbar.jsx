@@ -1,19 +1,21 @@
 import React, { useRef, useState } from "react";
 
-//My image scrolls up and disappears
-
-const NavbarElement = ({ sections, onClick, refff }) => {
+const NavbarElement = ({ sections, onClick }) => {
     return (
         <>
             {sections.map(function (data) {
-                return <div key={data.key} id={data.key} onClick={onClick} > {data.key} </div>;
+                return (
+                    <div key={data.key} id={data.key} onClick={onClick}>
+                        {" "}
+                        {data.key}{" "}
+                    </div>
+                );
             })}
         </>
     );
 };
 
 const Navbar = ({ sections, onClick }) => {
-
     const [height, setHeight] = useState("100vh");
     const listenToScroll = () => {
         var ViewHeight = window.visualViewport.height;
@@ -31,8 +33,8 @@ const Navbar = ({ sections, onClick }) => {
                 top: 0,
                 left: 0,
             }}
-        >   
-        <NavbarElement sections={sections} onClick={onClick}/>
+        >
+            <NavbarElement sections={sections} onClick={onClick} />
         </div>
     );
 };

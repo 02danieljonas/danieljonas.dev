@@ -3,9 +3,9 @@ import { useRef, useState } from "react";
 
 function App() {
     const refList = [];
-    refList.push(useRef(null))//copy paste this for every new section
-    refList.push(useRef(null))
-    refList.push(useRef(null))
+    refList.push(useRef(null)); //copy paste this for every new section
+    refList.push(useRef(null));
+    refList.push(useRef(null));
 
     const sections = [
         <section key="section0" ref={refList[0]}>
@@ -48,6 +48,8 @@ function App() {
             et sagittis dignissim.
         </section>,
     ];
+    console.log(sections[1].key);
+    console.log();
 
     const scrollToRef = (target) => {
         window.scrollTo({
@@ -59,7 +61,13 @@ function App() {
     return (
         <div className="App">
             <Navbar
-                sections={sections}
+                sections={
+                    sections.map((e) => {
+                        return {key: e.key, ref: e.ref};
+                    })
+                    //should have a for each loop (or maybe a map)
+                    //that only returns the key and ref
+                }
                 onClick={scrollToRef}
             />
             <main style={{ paddingTop: window.visualViewport.height }}>
