@@ -1,75 +1,17 @@
 import Navbar from "./components/Navbar";
 import { useRef, useState, useEffect } from "react";
+import Home from "./components/pages/Home";
+import logo from "./images/logo.png";
+import About from "./components/pages/About";
+import Section1 from "./components/pages/Section1";
 
 function App() {
     useEffect(() => {
         document.title = "Daniel's Website";
     }, []);
 
-    const refList = []; //maybe I should pass this down to the sections who pass it down the Section.jsx
-    refList.push(useRef(null)); //push a new one for every section
-    refList.push(useRef(null)); //can't use useRef inside of a loop :(
-    refList.push(useRef(null)); //making a custom section would solve my issue
-    refList.push(useRef(null));
-    // I should format the sections
-    // a seperate file for each section
-    // pass  the info into a template that create all the  need info for the section
-
-    
-    const sections = [
-        <section
-            name="Home"
-            key="0"
-            ref={refList[0]}
-            style={{
-                position: "absolute",
-                top: 0,
-                zIndex:0,
-            }}
-        >
-            Home-Hook
-        </section>,
-        <section name="About" key="1" ref={refList[1]}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
-            ipsum libero, pretium eget est in, fermentum blandit mi. Curabitur
-            luctus feugiat luctus. Morbi vitae lorem ultricies, elementum elit
-            ut, ultricies libero. Etiam malesuada interdum volutpat.
-            Pellentesque placerat aliquet libero, at mollis nibh accumsan a.
-            Fusce quis ligula sem. Fusce tempus felis vel nulla varius cursus.
-            Maecenas elementum nibh neque, sit amet pulvinar diam malesuada
-            sodales. Nunc nec suscipit lectus, sit amet dapibus erat. Fusce nec
-            tellus ut enim convallis ullamcorper. Integer vitae pellentesque
-            nunc. Vivamus mattis magna a erat ultricies, sit amet tincidunt enim
-            aliquet. Praesent congue laoreet ex. Mauris interdum malesuada orci
-            eu feugiat. Sed rutrum tempus ex sit amet efficitur.
-        </section>,
-        <section name="section" key="2" ref={refList[2]}>
-            Ut suscipit dui ac risus sagittis, a venenatis dui faucibus.
-            Pellentesque sit amet aliquam metus, ut hendrerit augue. Donec
-            consequat id risus in fermentum. Sed mollis, odio in viverra
-            ullamcorper, ante magna semper urna, sit amet placerat turpis enim
-            id nisi. Sed vel porta metus, a aliquam sem. Vivamus at augue vel
-            ligula sagittis vestibulum. Quisque euismod ullamcorper est id
-            venenatis. Aliquam rutrum aliquet erat sed sodales. Pellentesque
-            consequat quam rutrum pretium maximus. Sed consectetur, urna nec
-            scelerisque elementum, elit nisl euismod libero, eget finibus urna
-            augue eu felis. Ut suscipit volutpat dapibus.
-        </section>,
-        <section name="section" key="3" ref={refList[3]}>
-            Etiam vitae fringilla felis, sed blandit dolor. In aliquet risus
-            felis, non tempor dolor gravida non. Duis eu elit maximus, lobortis
-            nibh ut, commodo purus. Praesent condimentum est velit, in faucibus
-            ex tincidunt semper. Vivamus non nisl et libero pharetra euismod non
-            in lectus. Donec at arcu maximus, pulvinar ligula vel, vulputate
-            lectus. Phasellus efficitur bibendum lacus, eget pulvinar nulla
-            tincidunt eget. Pellentesque massa sem, aliquet sed rutrum sed,
-            commodo mollis felis. Cras viverra porta volutpat. Mauris interdum
-            vehicula urna, ac sollicitudin augue blandit ac. Mauris vulputate
-            orci ipsum, nec rhoncus justo volutpat sed. Suspendisse blandit mi
-            et sagittis dignissim.
-        </section>,
-    ];
-
+    const refList = [];
+    const sectionList = [];
 
     const scrollToRef = (target) => {
         window.scrollTo({
@@ -77,17 +19,15 @@ function App() {
             behavior: "smooth",
         });
     };
+
     return (
         <div className="App">
-            <Navbar
-                sections={sections.map(({ key, ref, props }) => {
-                    return { key: key, ref: ref, name: props.name };
-                })}
-                onClick={scrollToRef}
-            />
             <main style={{ paddingTop: window.visualViewport.height }}>
-                {sections}
+                <Home refList={refList} sectionList={sectionList} />
+                <About refList={refList} sectionList={sectionList} />
+                <Section1 refList={refList} sectionList={sectionList} />
             </main>
+            <Navbar sections={sectionList} onClick={scrollToRef}></Navbar>
         </div>
     );
 }
