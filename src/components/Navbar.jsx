@@ -1,12 +1,19 @@
 import React, { useRef, useState } from "react";
+import logo from "../images/logo.png";
 
 const NavbarElement = ({ sections, onClick }) => {
     return (
         <>
-            {sections.map(function ({ name, key }) {
+            {sections.map(function ({ name, key, addClassName }) {
                 // console.log(data.name)
                 return (
-                    <div name={name} id={key} key={key} onClick={onClick}>
+                    <div
+                        name={name}
+                        id={key}
+                        key={key}
+                        onClick={onClick}
+                        className={addClassName}
+                    >
                         {name}
                     </div>
                 );
@@ -17,12 +24,16 @@ const NavbarElement = ({ sections, onClick }) => {
 //TODO the event listener should only be active when the screen top is neer 100vh
 //if bellow deactive turn it off
 //
-const Navbar = ({ sections, onClick, children }) => {
+const Navbar = ({ sections, onClick, children, addClassName }) => {
     const [height, setHeight] = useState("100vh");
     const listenToScroll = () => {
         var viewHeight = window.visualViewport.height;
         var scrollY = window.scrollY;
         setHeight(viewHeight - scrollY > 70 ? viewHeight - scrollY : 70);
+        //get the position of the section
+        console.log(
+            sections[1].ref //.current//.offsetHeight
+        );
     };
     window.addEventListener("scroll", listenToScroll);
     return (

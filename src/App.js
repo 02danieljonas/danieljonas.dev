@@ -1,7 +1,7 @@
 import Navbar from "./components/Navbar";
 import { useRef, useState, useEffect } from "react";
 import Home from "./components/pages/Home";
-import logo from "./images/logo.png";
+// import logo from "./images/logo.png";
 import About from "./components/pages/About";
 import Section1 from "./components/pages/Section1";
 
@@ -14,10 +14,18 @@ function App() {
     const sectionList = [];
 
     const scrollToRef = (target) => {
-        window.scrollTo({
-            top: refList[target.target.id].current.offsetTop,
-            behavior: "smooth",
-        });
+        if (target.target.src != null) {
+            //this is to detect if an image exist and if the user clicks on the image it takes the info from the parent div
+            window.scrollTo({
+                top: refList[target.target.parentElement.id].current.offsetTop,
+                behavior: "smooth",
+            });
+        } else {
+            window.scrollTo({
+                top: refList[target.target.id].current.offsetTop,
+                behavior: "smooth",
+            });
+        }
     };
 
     return (
