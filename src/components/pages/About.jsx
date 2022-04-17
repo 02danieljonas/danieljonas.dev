@@ -1,13 +1,12 @@
 import React from "react";
 import Section from "../Section";
 
-const About = ({ refList, sectionList }) => {
+const About = ({ sectionInfo }) => {
     return (
         <Section
             name="About"
             listOrder="1"
-            refList={refList}
-            sectionList={sectionList}
+            sectionInfo={sectionInfo}
         >
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
             ipsum libero, pretium eget est in, fermentum blandit mi. Curabitur

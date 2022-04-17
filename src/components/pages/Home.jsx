@@ -2,13 +2,12 @@ import React from "react";
 import Section from "../Section";
 import logo from "../../images/logo.png";
 
-const Home = ({ refList, sectionList }) => {
+const Home = ({ sectionInfo }) => {
     return (
         <>
             <Section
                 name="Home"
                 listOrder="0"
-                refList={refList}
                 addClassName="logo"
                 style={{
                     position: "absolute",
@@ -16,8 +15,8 @@ const Home = ({ refList, sectionList }) => {
                     paddingTop: 0,
                     zIndex: 0,
                 }}
-                sectionList={sectionList}
-                image={<img src={logo} width="40px" height="40px"/>}
+                sectionInfo={sectionInfo}
+                image={<img src={logo} width="40px" height="40px" alt="logo" />}
             >
                 Home-Proper
             </Section>

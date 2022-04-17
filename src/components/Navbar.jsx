@@ -1,5 +1,4 @@
-import React, { useRef, useState } from "react";
-import logo from "../images/logo.png";
+import React, { useState } from "react";
 
 const NavbarElement = ({ sections, onClick }) => {
     return (
@@ -24,18 +23,24 @@ const NavbarElement = ({ sections, onClick }) => {
 //TODO the event listener should only be active when the screen top is neer 100vh
 //if bellow deactive turn it off
 //
-const Navbar = ({ sections, onClick, children, addClassName }) => {
+const Navbar = ({ onClick, children, mainRefs, sectionInfo }) => {
     const [height, setHeight] = useState("100vh");
     const listenToScroll = () => {
         var viewHeight = window.visualViewport.height;
         var scrollY = window.scrollY;
         setHeight(viewHeight - scrollY > 70 ? viewHeight - scrollY : 70);
-        //get the position of the section
-        console.log(
-            sections[1].ref //.current//.offsetHeight
-        );
     };
+    const resize = () => {
+        var viewHeight = window.visualViewport.height;
+        var scrollY = window.scrollY;
+        setHeight(viewHeight - scrollY > 70 ? viewHeight - scrollY : 70);
+        mainRefs.current.style.paddingTop = "100vh"
+        console.log(mainRefs.current)
+    }
+
     window.addEventListener("scroll", listenToScroll);
+    window.addEventListener("resize", resize);
+
     return (
         <div
             className="Navbar"
@@ -52,7 +57,10 @@ const Navbar = ({ sections, onClick, children, addClassName }) => {
                 // transition: "1s",
             }}
         >
-            <NavbarElement sections={sections} onClick={onClick} />
+            <NavbarElement
+                sections={sectionInfo}
+                onClick={onClick}
+            />
             {children}
         </div>
     );
