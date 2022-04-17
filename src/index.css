@@ -58,7 +58,6 @@ body {
     cursor: pointer;
     border-radius: 15px;
     z-index: 999999 !important;
-    /* TODO Make the div spin */
 }
 
 .Navbar div:hover {
@@ -66,12 +65,15 @@ body {
 }
 
 .Navbar .logo {
-    transition: 9s ease-in-out !important;
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    transition: 2s ease-in-out;
 }
 
 .Navbar .logo:hover {
     background-color: rgb(31, 255, 1, 0);
-    transform: rotate(720deg);
+    transform: rotate(180deg);
 }
 
 main {

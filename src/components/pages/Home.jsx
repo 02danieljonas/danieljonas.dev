@@ -2,8 +2,6 @@ import React from "react";
 import Section from "../Section";
 import logo from "../../images/logo.png";
 
-//TODO: center the logo.png so the spin looks good
-
 const Home = ({ refList, sectionList }) => {
     return (
         <>
@@ -19,7 +17,7 @@ const Home = ({ refList, sectionList }) => {
                     zIndex: 0,
                 }}
                 sectionList={sectionList}
-                image={<img src={logo} width="40px" />}
+                image={<img src={logo} width="40px" height="40px"/>}
             >
                 Home-Proper
             </Section>
