@@ -32,18 +32,23 @@ const About = ({ sections }) => {
                     top: "50vh",
                     left: "50vw",
                     transform: "translate(-50%, 0%)",
-                    height: "140vh",
-                    width: "400px",
+                    height: "150vh",
+                    width: "50vh",
                     backgroundColor: "green",
                     //TODO get the exact values set
-                    //TODO I could have a normal image on the nav and when the user scrolls the image with the scrolling feature is put into place
+                    //TODO I could have a normal image on the nav and when the scroll reaches a certain threshold it switches to the sticky image and even better I won't have to mess with z-index
+                    // and when the user scrolls the image with the scrolling feature is put into place
                 }}
             >
                 <img
                     src={portrait}
                     style={{
+                        //* The image is not directly on the div because it is translated 50%
+                        //
+                        
                         position: "sticky",
                         zIndex: 99999,
+                        width: "50vh",
                         top: "50vh",
                         margin: "0 auto",
                         transform: "translate(0%, -50%)",

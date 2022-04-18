@@ -34,7 +34,7 @@ function App() {
             >
                 <Home sections={sections} />
                 <About sections={sections} />
-                {/* <Section1 sections={sections} /> */}
+                <Section1 sections={sections} />
             </main>
             <Navbar
                 onClick={scrollToRef}
