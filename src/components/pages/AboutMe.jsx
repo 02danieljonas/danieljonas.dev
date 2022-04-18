@@ -29,13 +29,14 @@ const About = ({ sections }) => {
                 style={{
                     zIndex: "3",
                     position: "absolute",
-                    top: "0",
+                    top: "50vh",
                     left: "50vw",
-                    transform: "translate(-50%,0%)",
-                    height: "200vh",
-                    width: "50vw",
+                    transform: "translate(-50%, 0%)",
+                    height: "140vh",
+                    width: "400px",
                     backgroundColor: "green",
-                    //TODO fix issue with hit box going over nav elemnets
+                    //TODO get the exact values set
+                    //TODO I could have a normal image on the nav and when the user scrolls the image with the scrolling feature is put into place
                 }}
             >
                 <img
@@ -44,10 +45,8 @@ const About = ({ sections }) => {
                         position: "sticky",
                         zIndex: 99999,
                         top: "50vh",
-                        left: "75vw",
-                        width: "100px",
                         margin: "0 auto",
-                        transform: "translate(-50%, -50%)",
+                        transform: "translate(0%, -50%)",
                     }}
                 />
             </div>
