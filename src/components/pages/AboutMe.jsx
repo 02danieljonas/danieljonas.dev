@@ -26,7 +26,6 @@ const About = ({ sections }) => {
                     left: "50vw",
                     transform: "translate(-50%, -50%)",
                     aspectRatio: "1/1",
-
                 }}
             />
         </Section>

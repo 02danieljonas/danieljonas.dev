@@ -43,9 +43,12 @@ const Navbar = ({ onClick, children, mainRefs, sections }) => {
         if (
             sections[1].ref.current.children[0].getBoundingClientRect().top <=
             80//viewHeight / 2
+        //TODO set it in the middle with an offset of the size of the nav bar
+        //TODO on the first load of things set the value of the image what I want after
         ) {
             imgStyle.position = "relative"
-            imgStyle.top = "0vh"
+            imgStyle.top = "200vh"//viewHeight/2-80
+            // imgStyle.tr
             imgStyle.zIndex=0
             console.log()
         } else {
