@@ -47,14 +47,14 @@ const Navbar = ({ onClick, children, mainRefs, sections }) => {
         //TODO on the first load of things set the value of the image what I want after
         ) {
             imgStyle.position = "relative"
-            imgStyle.top = "200vh"//viewHeight/2-80
-            // imgStyle.tr
+            imgStyle.top = "16px"//viewHeight/2-80
             imgStyle.zIndex=0
-            console.log()
+            imgStyle.transform = "translate(-50%, 50%)"
         } else {
             imgStyle.position = "fixed"
             imgStyle.top = "50vh"
             imgStyle.zIndex=3
+            imgStyle.transform = "translate(-50%, -50%)"
 
         }
 
