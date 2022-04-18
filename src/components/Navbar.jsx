@@ -24,25 +24,20 @@ const Navbar = ({ onClick, children, mainRefs, sections }) => {
         var viewHeight = window.visualViewport.height;
         var scrollY = window.scrollY;
         // TODO find out the section the user is on and highlight the proper nav ele
-        // console.log(scrollY)
         if(!scrollY){
-            //show the image on th nav
             console.log(sections[1].ref.current.children[sections[1].ref.current.children.length-1])
         }
         if (viewHeight - scrollY > 70) {
             setHeight(viewHeight - scrollY);
-            //TODO set the image zIndex above nav bar
         } else {
             setHeight(70);
-            //TODO set the image zIndex below nav bar
         }
         if(height<140){
-            sections[1].ref.current.children[sections[1].ref.current.children.length-1].style.zIndex=1
+            sections[1].ref.current.children[sections[1].ref.current.children.length-2].style.display="none"
         }
         else{
-            sections[1].ref.current.children[sections[1].ref.current.children.length-1].style.zIndex=3
+            sections[1].ref.current.children[sections[1].ref.current.children.length-2].style.display="revert"
         }
-        //TODO if passed 50vh set
     };
     const resize = () => {
         var viewHeight = window.visualViewport.height;

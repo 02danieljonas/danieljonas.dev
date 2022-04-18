@@ -6,9 +6,6 @@ import portrait from "../../images/portrait.png";
 
 const About = ({ sections }) => {
     return (
-        //TODO make a div that spans from the top of the screen to about me
-        //TODO make img a sticky on that div
-        //TODO make the div stop at the position you want to be the middle of about me
         <Section name="About Me" listOrder="1" sections={sections}>
             <div>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
@@ -25,9 +22,26 @@ const About = ({ sections }) => {
                 vel facilisis. Quisque sagittis mauris id turpis faucibus, sit
                 amet gravida sem ultricies.
             </div>
+            
+            <img
+                    src={portrait}
+                    style={{
+                        //? The image is not directly on the div because it is translated 50%
+                        //TODO use only one image, that might be too hard
+                        
+                        position: "fixed",
+                        zIndex: 99999,
+                        width: "50vh",
+                        top: "50vh",
+                        left: "50vw",
+                        margin: "0 auto",
+                        transform: "translate(-50%, -50%)",
+                        aspectRatio: "1/1",
+                    }}
+                />
             <div
                 style={{
-                    zIndex: "3",
+                    zIndex: "1",
                     position: "absolute",
                     top: "50vh",
                     left: "50vw",
@@ -35,19 +49,13 @@ const About = ({ sections }) => {
                     height: "150vh",
                     width: "50vh",
                     backgroundColor: "green",
-                    //TODO get the exact values set
-                    //TODO I could have a normal image on the nav and when the scroll reaches a certain threshold it switches to the sticky image and even better I won't have to mess with z-index
-                    // and when the user scrolls the image with the scrolling feature is put into place
                 }}
             >
                 <img
                     src={portrait}
                     style={{
-                        //* The image is not directly on the div because it is translated 50%
-                        //
-                        
+                        //? The image is not directly on the div because it is translated 50%
                         position: "sticky",
-                        zIndex: 99999,
                         width: "50vh",
                         top: "50vh",
                         margin: "0 auto",
@@ -55,6 +63,7 @@ const About = ({ sections }) => {
                     }}
                 />
             </div>
+            
         </Section>
     );
 };
