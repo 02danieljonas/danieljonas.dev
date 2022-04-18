@@ -1,31 +1,21 @@
 import React, { useState, useRef } from "react";
 
 const NavbarElement = ({ sections, onClick }) => {
-    const navElementList = 
-        sections.map(function ({ name, key, addClassName }) {
-            return (
-                [<div
-                    name={name}
-                    id={key}
-                    key={key}
-                    onClick={onClick}
-                    className={addClassName}
-                    
-                >
-                    {name}
-                </div>,
-]
-            )
-        })
-    
+    const navElementList = sections.map(function ({ name, key, addClassName }) {
+        return [
+            <div
+                name={name}
+                id={key}
+                key={key}
+                onClick={onClick}
+                className={addClassName}
+            >
+                {name}
+            </div>,
+        ];
+    });
 
-    return (
-        <>
-            {
-            navElementList
-            }
-        </>
-    );
+    return <>{navElementList}</>;
 };
 
 const Navbar = ({ onClick, children, mainRefs, sections }) => {
@@ -33,35 +23,13 @@ const Navbar = ({ onClick, children, mainRefs, sections }) => {
     const listenToScroll = () => {
         var viewHeight = window.visualViewport.height;
         var scrollY = window.scrollY;
-
-        var imgPosition = sections[1].ref.current.children.length - 1;
-
-        
         // TODO find out the section the user is on and highlight the proper nav ele
-        // TODO if the about me section is above the top, set image to not moving and the position to middle of the screen
-        var imgStyle = sections[1].ref.current.children[imgPosition].style
-        if (
-            sections[1].ref.current.children[0].getBoundingClientRect().top <=
-            80//viewHeight / 2
-        //TODO set it in the middle with an offset of the size of the nav bar
-        //TODO on the first load of things set the value of the image what I want after
-        ) {
-            imgStyle.position = "sticky"
-            imgStyle.top = "16px"//viewHeight/2-80
-            imgStyle.zIndex=0
-            imgStyle.transform = "translate(-50%, )"
-        } else {
-            imgStyle.position = "fixed"
-            imgStyle.top = "50vh"
-            imgStyle.zIndex=3
-            imgStyle.transform = "translate(-50%, -50%)"
-
-        }
-
         if (viewHeight - scrollY > 70) {
             setHeight(viewHeight - scrollY);
+            //TODO set the image zIndex above nav bar
         } else {
             setHeight(70);
+            //TODO set the image zIndex below nav bar
         }
     };
     const resize = () => {
