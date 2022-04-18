@@ -2,7 +2,7 @@ import React from "react";
 import Section from "../Section";
 import logo from "../../images/logo.png";
 
-const Home = ({ sectionInfo }) => {
+const Home = ({ sections }) => {
     return (
         <>
             <Section
@@ -14,8 +14,10 @@ const Home = ({ sectionInfo }) => {
                     top: 0,
                     paddingTop: 0,
                     zIndex: 0,
+                    aspectRatio: "1/1",
+
                 }}
-                sectionInfo={sectionInfo}
+                sections={sections}
                 image={<img src={logo} width="40px" height="40px" alt="logo" />}
             >
                 Home-Proper

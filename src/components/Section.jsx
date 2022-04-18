@@ -8,9 +8,9 @@ const Section = ({
     style,
     image, //if an image is passed the image is put on the nav bar instead of {name}
     addClassName,
-    sectionInfo,
+    sections,
 }) => {
-    sectionInfo[listOrder] = 
+    sections[listOrder] = 
         {
             key: listOrder, //merge this--
             ref: useRef(null),
@@ -20,10 +20,10 @@ const Section = ({
 
     return (
         <section
-            key={sectionInfo[listOrder].key}
-            ref={sectionInfo[listOrder].ref}
-            name={sectionInfo[listOrder].name}
-            className={sectionInfo[listOrder].addClassName}
+            key={sections[listOrder].key}
+            ref={sections[listOrder].ref}
+            name={sections[listOrder].name}
+            className={sections[listOrder].addClassName}
             style={style}
         >
             {children}

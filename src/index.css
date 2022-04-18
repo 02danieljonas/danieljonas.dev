@@ -2,7 +2,7 @@
     font-size: 18px;
     font-family: "Open Sans";
     --text-primary: #7fc8f8;
-    --text-secondary: #5aa9e6;
+    --text-secondary: #DC7F9B ;
     --bg-primary: #0e1c36;
     --bg-secondary: #52489c;
     --wild-color: #faebd7;
@@ -62,6 +62,11 @@ body {
 
 .Navbar div:hover {
     background-color: var(--bg-secondary);
+}
+
+.Navbar .Selected{
+    color: var(--wild-color);
+
 }
 
 .Navbar .logo {

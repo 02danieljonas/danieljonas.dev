@@ -1,13 +1,13 @@
 import React from "react";
 import Section from "../Section";
 
-const Section1 = ({ sectionInfo }) => {
+const Section1 = ({ sections }) => {
     return (
         <>
             <Section
                 name="Section1"
                 listOrder="2"
-                sectionInfo={sectionInfo}
+                sections={sections}
             >
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
                 ipsum libero, pretium eget est in, fermentum blandit mi.
