@@ -46,10 +46,10 @@ const Navbar = ({ onClick, children, mainRefs, sections }) => {
         //TODO set it in the middle with an offset of the size of the nav bar
         //TODO on the first load of things set the value of the image what I want after
         ) {
-            imgStyle.position = "relative"
+            imgStyle.position = "sticky"
             imgStyle.top = "16px"//viewHeight/2-80
             imgStyle.zIndex=0
-            imgStyle.transform = "translate(-50%, 50%)"
+            imgStyle.transform = "translate(-50%, )"
         } else {
             imgStyle.position = "fixed"
             imgStyle.top = "50vh"
