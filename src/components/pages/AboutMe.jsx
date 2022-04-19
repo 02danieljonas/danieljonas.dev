@@ -30,7 +30,7 @@ const About = ({ sections }) => {
                         //TODO use only one image, that might be too hard
                         
                         position: "fixed",
-                        zIndex: 99999,
+                        zIndex: 9,
                         width: "50vh",
                         top: "50vh",
                         left: "50vw",
@@ -41,14 +41,14 @@ const About = ({ sections }) => {
                 />
             <div
                 style={{
-                    zIndex: "1",
+                    zIndex: 8,
                     position: "absolute",
-                    top: "50vh",
+                    top: "101vh",
                     left: "50vw",
                     transform: "translate(-50%, 0%)",
                     height: "150vh",
                     width: "50vh",
-                    backgroundColor: "green",
+                    // backgroundColor: "green",
                 }}
             >
                 <img

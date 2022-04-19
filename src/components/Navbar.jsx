@@ -24,21 +24,38 @@ const Navbar = ({ onClick, children, mainRefs, sections }) => {
         var viewHeight = window.visualViewport.height;
         var scrollY = window.scrollY;
         // TODO find out the section the user is on and highlight the proper nav ele
-        if(!scrollY){
-            console.log(sections[1].ref.current.children[sections[1].ref.current.children.length-1])
-        }
+        // if (!scrollY) {
+        //     console.log(
+        //         sections[1].ref.current.children[
+        //             sections[1].ref.current.children.length - 1
+        //         ]
+        //     );
+        // }
         if (viewHeight - scrollY > 70) {
             setHeight(viewHeight - scrollY);
         } else {
             setHeight(70);
         }
-        if(height<140){
-            sections[1].ref.current.children[sections[1].ref.current.children.length-2].style.display="none"
-        }
-        else{
-            sections[1].ref.current.children[sections[1].ref.current.children.length-2].style.display="revert"
-        }
+        // console.log(navRef.current.getBoundingClientRect())
+        try {
+            var image2Position = sections[1].ref.current.children.length - 1;
+            var topofImageFixed = sections[1].ref.current.children[image2Position - 1].getBoundingClientRect().top
+            var topofImageSticky = sections[1].ref.current.children[image2Position].children[0].getBoundingClientRect().top;
+
+            if (topofImageFixed >=topofImageSticky) {
+                sections[1].ref.current.children[image2Position - 1].style.display = "none";
+            } else {
+                sections[1].ref.current.children[image2Position - 1].style.display = "revert";
+                console.log(sections[1].ref.current.children[image2Position].children[0].style)
+                // sections[1].ref.current.children[image2Position].children[0].style.display = "none"
+            }
+            if(true){
+
+            }
+        } catch {}
+        // console.log(scrollY)
     };
+
     const resize = () => {
         var viewHeight = window.visualViewport.height;
         var scrollY = window.scrollY;
@@ -50,9 +67,12 @@ const Navbar = ({ onClick, children, mainRefs, sections }) => {
     window.addEventListener("scroll", listenToScroll);
     window.addEventListener("resize", resize);
 
+    const navRef = useRef(null);
+
     return (
         <div
             className="Navbar"
+            ref={navRef}
             style={{
                 position: "fixed",
                 width: "100vw",
