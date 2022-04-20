@@ -49,7 +49,7 @@ const About = ({ sections }) => {
                     transform: "translate(-50%, 0%)",
                     height: "150vh",
                     width: "50vh",
-                    // backgroundColor: "green",
+                    backgroundColor: "green",
                 }}
             >
                 <img
