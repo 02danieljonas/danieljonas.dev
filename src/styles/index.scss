@@ -8,6 +8,10 @@
     --wild-color: #faebd7;
 }
 
+::selection {
+    background-color: cyan;
+}
+
 * {
     margin: 0;
     max-width: 100%;

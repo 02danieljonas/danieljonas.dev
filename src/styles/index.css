@@ -8,6 +8,14 @@
   --wild-color: #faebd7;
 }
 
+::-moz-selection {
+  background-color: cyan;
+}
+
+::selection {
+  background-color: cyan;
+}
+
 * {
   margin: 0;
   max-width: 100%;

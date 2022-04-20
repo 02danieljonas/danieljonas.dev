@@ -38,6 +38,7 @@ const About = ({ sections }) => {
                         aspectRatio: "1/1",
                     }}
                 />
+
             <div
                 style={{
                     zIndex: 1,
