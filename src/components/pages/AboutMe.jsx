@@ -27,8 +27,8 @@ const About = ({ sections }) => {
                     src={portrait}
                     style={{
                         //? The image is not directly on the div because it is translated 50%
-                        //TODO use only one image, that might be too hard
-                        
+                        //TODO use only one image, that might be too hard                        
+
                         position: "fixed",
                         zIndex: 9,
                         width: "50vh",
@@ -41,7 +41,7 @@ const About = ({ sections }) => {
                 />
             <div
                 style={{
-                    zIndex: 8,
+                    zIndex: 1,
                     position: "absolute",
                     top: "101vh",
                     left: "50vw",

@@ -1,7 +1,6 @@
 import Navbar from "./components/Navbar";
 import { useRef, useEffect } from "react";
 import Home from "./components/pages/Home";
-// import logo from "./images/logo.png";
 import About from "./components/pages/AboutMe";
 import Section1 from "./components/pages/Section1";
 
