@@ -7,6 +7,7 @@ const NavbarElement = ({ sections, onClick, NavbarElemRefs }) => {
     //TODO change nav bar so it's called by Section.jsx, will make it easier to set up refs in the elements
     //TODO could also just reformat his code
     //TODO The real answer is to reformat the code Section.jsx is called TOO much to do it properly
+    //TODO use componentDidMount
 
     const navElementList = sections.map(function ({ name, key, addClassName }) {
         // NavbarElemRefs[key] = useRef(null)
