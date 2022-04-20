@@ -1,15 +1,15 @@
 import React, { useState, useRef } from "react";
 
 const NavbarElement = ({ sections, onClick, NavbarElemRefs }) => {
-    const func = (e) =>{
-        console.log(e)
-    }
+    const func = (e) => {
+        console.log(e);
+    };
     //TODO change nav bar so it's called by Section.jsx, will make it easier to set up refs in the elements
     //TODO could also just reformat his code
     //TODO The real answer is to reformat the code Section.jsx is called TOO much to do it properly
 
     const navElementList = sections.map(function ({ name, key, addClassName }) {
-        NavbarElemRefs[key] = useRef(null)
+        // NavbarElemRefs[key] = useRef(null)
         return [
             <div
                 name={name}
@@ -22,45 +22,35 @@ const NavbarElement = ({ sections, onClick, NavbarElemRefs }) => {
             </div>,
         ];
     });
-
     return <>{navElementList}</>;
 };
 
 const Navbar = ({ onClick, children, mainRefs, sections }) => {
+    //! scroll calls the resize variable A LOT and also the counter acts really weird, 
+    //! if the count is at 80, it will console.log 1-80 (sometimes random order, sometimes in reverse)
     const [height, setHeight] = useState("100vh");
-    const listenToScroll = () => {
-        var viewHeight = window.visualViewport.height;
-        var scrollY = window.scrollY;
-        // TODO find out the section the user is on and highlight the proper nav ele
-        // if(!scrollY){
-        //     console.log(sections[1].ref.current.children[sections[1].ref.current.children.length-1])
-        // }
+    const [viewHeight, SetViewHeight] = useState(window.visualViewport.height);
+    const [scrollY, SetScrollY] = useState(window.scrollY);
+    const resize = () => {
+        SetViewHeight(window.visualViewport.height);
+        SetScrollY(window.scrollY);
+
         if (viewHeight - scrollY > 70) {
             setHeight(viewHeight - scrollY);
+            sections[1].ref.current.children[sections[1].ref.current.children.length-2].style.display="revert"
+            sections[1].ref.current.children[sections[1].ref.current.children.length-1].children[0].style.display="none"
         } else {
             setHeight(70);
+            sections[1].ref.current.children[sections[1].ref.current.children.length-2].style.display="none"
+            sections[1].ref.current.children[sections[1].ref.current.children.length-1].children[0].style.display="revert"
         }
-        // console.log("h is")
-        // console.log(height)
-        // if(height>200){
-        //     sections[1].ref.current.children[sections[1].ref.current.children.length-2].style.display="none"
-        // }
-        // else{
-        //     sections[1].ref.current.children[sections[1].ref.current.children.length-2].style.display="revert"
-        // }
-    };
-    const resize = () => {
-        var viewHeight = window.visualViewport.height;
-        var scrollY = window.scrollY;
-        setHeight(viewHeight - scrollY > 70 ? viewHeight - scrollY : 70);
         mainRefs.current.style.paddingTop = "100vh";
-        //TODO looks for AboutMe and changes size accordingly
     };
-
-    window.addEventListener("scroll", listenToScroll);
+    window.addEventListener("scroll", resize);
     window.addEventListener("resize", resize);
 
-    const NavbarElemRefs = []
+
+    const NavbarElemRefs = [];
 
     return (
         <div
@@ -78,7 +68,11 @@ const Navbar = ({ onClick, children, mainRefs, sections }) => {
                 // transition: "1s",
             }}
         >
-            <NavbarElement sections={sections} onClick={onClick} NavbarElemRefs={NavbarElemRefs}/>
+            <NavbarElement
+                sections={sections}
+                onClick={onClick}
+                NavbarElemRefs={NavbarElemRefs}
+            />
             {children}
         </div>
     );
