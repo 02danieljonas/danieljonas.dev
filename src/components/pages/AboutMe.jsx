@@ -2,7 +2,7 @@ import React, { useTransition } from "react";
 import Section from "../Section";
 import portrait from "../../images/portrait.png";
 
-//TODO
+//TODO use only one image with a css 
 
 const About = ({ sections }) => {
     return (
