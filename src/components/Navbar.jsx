@@ -1,7 +1,15 @@
 import React, { useState, useRef } from "react";
 
-const NavbarElement = ({ sections, onClick }) => {
+const NavbarElement = ({ sections, onClick, NavbarElemRefs }) => {
+    const func = (e) => {
+        console.log(e);
+    };
+    //TODO change nav bar so it's called by Section.jsx, will make it easier to set up refs in the elements
+    //TODO could also just reformat his code
+    //TODO The real answer is to reformat the code Section.jsx is called TOO much to do it properly
+
     const navElementList = sections.map(function ({ name, key, addClassName }) {
+        // NavbarElemRefs[key] = useRef(null)
         return [
             <div
                 name={name}
@@ -14,65 +22,39 @@ const NavbarElement = ({ sections, onClick }) => {
             </div>,
         ];
     });
-
     return <>{navElementList}</>;
 };
 
 const Navbar = ({ onClick, children, mainRefs, sections }) => {
+    //! scroll calls the resize variable A LOT and also the counter acts really weird, 
+    //! if the count is at 80, it will console.log 1-80 (sometimes random order, sometimes in reverse)
     const [height, setHeight] = useState("100vh");
-    const listenToScroll = () => {
-        var viewHeight = window.visualViewport.height;
-        var scrollY = window.scrollY;
-        // TODO find out the section the user is on and highlight the proper nav ele
-        // if (!scrollY) {
-        //     console.log(
-        //         sections[1].ref.current.children[
-        //             sections[1].ref.current.children.length - 1
-        //         ]
-        //     );
-        // }
+    const [viewHeight, SetViewHeight] = useState(window.visualViewport.height);
+    const [scrollY, SetScrollY] = useState(window.scrollY);
+    const resize = () => {
+        SetViewHeight(window.visualViewport.height);
+        SetScrollY(window.scrollY);
+
         if (viewHeight - scrollY > 70) {
             setHeight(viewHeight - scrollY);
+            sections[1].ref.current.children[sections[1].ref.current.children.length-2].style.display="revert"
+            sections[1].ref.current.children[sections[1].ref.current.children.length-1].children[0].style.display="none"
         } else {
             setHeight(70);
+            sections[1].ref.current.children[sections[1].ref.current.children.length-2].style.display="none"
+            sections[1].ref.current.children[sections[1].ref.current.children.length-1].children[0].style.display="revert"
         }
-        // console.log(navRef.current.getBoundingClientRect())
-        try {
-            var image2Position = sections[1].ref.current.children.length - 1;
-            var topofImageFixed = sections[1].ref.current.children[image2Position - 1].getBoundingClientRect().top
-            var topofImageSticky = sections[1].ref.current.children[image2Position].children[0].getBoundingClientRect().top;
-
-            if (topofImageFixed >=topofImageSticky) {
-                sections[1].ref.current.children[image2Position - 1].style.display = "none";
-            } else {
-                sections[1].ref.current.children[image2Position - 1].style.display = "revert";
-                console.log(sections[1].ref.current.children[image2Position].children[0].style)
-                // sections[1].ref.current.children[image2Position].children[0].style.display = "none"
-            }
-            if(true){
-
-            }
-        } catch {}
-        // console.log(scrollY)
-    };
-
-    const resize = () => {
-        var viewHeight = window.visualViewport.height;
-        var scrollY = window.scrollY;
-        setHeight(viewHeight - scrollY > 70 ? viewHeight - scrollY : 70);
         mainRefs.current.style.paddingTop = "100vh";
-        //TODO looks for AboutMe and changes size accordingly
     };
-
-    window.addEventListener("scroll", listenToScroll);
+    window.addEventListener("scroll", resize);
     window.addEventListener("resize", resize);
 
-    const navRef = useRef(null);
+
+    const NavbarElemRefs = [];
 
     return (
         <div
             className="Navbar"
-            ref={navRef}
             style={{
                 position: "fixed",
                 width: "100vw",
@@ -86,7 +68,11 @@ const Navbar = ({ onClick, children, mainRefs, sections }) => {
                 // transition: "1s",
             }}
         >
-            <NavbarElement sections={sections} onClick={onClick} />
+            <NavbarElement
+                sections={sections}
+                onClick={onClick}
+                NavbarElemRefs={NavbarElemRefs}
+            />
             {children}
         </div>
     );

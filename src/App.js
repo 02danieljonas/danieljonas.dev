@@ -4,6 +4,17 @@ import Home from "./components/pages/Home";
 // import logo from "./images/logo.png";
 import About from "./components/pages/AboutMe";
 import Section1 from "./components/pages/Section1";
+// ! bold
+// - hi
+// *
+// //
+// ?
+// TODO
+
+
+
+// Fix everything
+//
 
 function App() {
     useEffect(() => {

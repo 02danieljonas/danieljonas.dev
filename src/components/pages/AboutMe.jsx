@@ -28,9 +28,10 @@ const About = ({ sections }) => {
                     style={{
                         //? The image is not directly on the div because it is translated 50%
                         //TODO use only one image, that might be too hard
+                        //TODO get the correct values
                         
                         position: "fixed",
-                        zIndex: 9,
+                        zIndex: 3,
                         width: "50vh",
                         top: "50vh",
                         left: "50vw",
