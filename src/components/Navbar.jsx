@@ -9,7 +9,6 @@ const NavbarElement = ({ sections, onClick, NavbarElemRefs }) => {
     //TODO The real answer is to reformat the code Section.jsx is called TOO much to do it properly
 
     const navElementList = sections.map(function ({ name, key, addClassName }) {
-        // NavbarElemRefs[key] = useRef(null)
         return [
             <div
                 name={name}
@@ -62,6 +61,7 @@ const Navbar = ({ onClick, children, mainRefs, sections }) => {
     return (
         <div
             className="Navbar"
+            ref={navRef}
             style={{
                 position: "fixed",
                 width: "100vw",
