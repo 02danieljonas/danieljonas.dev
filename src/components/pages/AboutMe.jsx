@@ -42,9 +42,9 @@ const About = ({ sections }) => {
                 />
             <div
                 style={{
-                    zIndex: "1",
+                    zIndex: 8,
                     position: "absolute",
-                    top: "50vh",
+                    top: "101vh",
                     left: "50vw",
                     transform: "translate(-50%, 0%)",
                     height: "150vh",
