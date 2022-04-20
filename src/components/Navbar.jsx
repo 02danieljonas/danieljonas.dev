@@ -9,7 +9,7 @@ const NavbarElement = ({ sections, onClick, NavbarElemRefs }) => {
     //TODO The real answer is to reformat the code Section.jsx is called TOO much to do it properly
 
     const navElementList = sections.map(function ({ name, key, addClassName }) {
-        NavbarElemRefs[key] = useRef(null)
+        // NavbarElemRefs[key] = useRef(null)
         return [
             <div
                 name={name}
@@ -28,36 +28,33 @@ const NavbarElement = ({ sections, onClick, NavbarElemRefs }) => {
 
 const Navbar = ({ onClick, children, mainRefs, sections }) => {
     const [height, setHeight] = useState("100vh");
-    const listenToScroll = () => {
-        var viewHeight = window.visualViewport.height;
-        var scrollY = window.scrollY;
-        // TODO find out the section the user is on and highlight the proper nav ele
-        // if(!scrollY){
-        //     console.log(sections[1].ref.current.children[sections[1].ref.current.children.length-1])
-        // }
+    const [viewHeight, setViewHeight] = useState(window.visualViewport.height);
+    const [scrollY, setScrollY] = useState(window.scrollY);
+    // var a = 0
+    const resize = () => {
+        //! The counter bellow shows a weird glitch
+        //! resize is called a lot of each scroll
+        // a++
+        // console.log(a)
+        setViewHeight(window.visualViewport.height);
+        setScrollY(window.scrollY);
         if (viewHeight - scrollY > 70) {
             setHeight(viewHeight - scrollY);
+            sections[1].ref.current.children[sections[1].ref.current.children.length-2].style.display = "revert"
+            sections[1].ref.current.children[sections[1].ref.current.children.length-1].children[0].style.display = "none"
+            
         } else {
             setHeight(70);
-        }
-        // console.log("h is")
-        // console.log(height)
-        // if(height>200){
-        //     sections[1].ref.current.children[sections[1].ref.current.children.length-2].style.display="none"
-        // }
-        // else{
-        //     sections[1].ref.current.children[sections[1].ref.current.children.length-2].style.display="revert"
-        // }
-    };
-    const resize = () => {
-        var viewHeight = window.visualViewport.height;
-        var scrollY = window.scrollY;
-        setHeight(viewHeight - scrollY > 70 ? viewHeight - scrollY : 70);
+            sections[1].ref.current.children[sections[1].ref.current.children.length-2].style.display = "none"
+            sections[1].ref.current.children[sections[1].ref.current.children.length-1].children[0].style.display = "revert"
+
+
+        }        
         mainRefs.current.style.paddingTop = "100vh";
         //TODO looks for AboutMe and changes size accordingly
     };
 
-    window.addEventListener("scroll", listenToScroll);
+    window.addEventListener("scroll", resize);
     window.addEventListener("resize", resize);
 
     const NavbarElemRefs = []
