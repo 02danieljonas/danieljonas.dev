@@ -10,7 +10,6 @@ const NavbarElement = ({ sections, onClick, NavbarElemRefs }) => {
     //TODO use componentDidMount
 
     const navElementList = sections.map(function ({ name, key, addClassName }) {
-        // NavbarElemRefs[key] = useRef(null)
         return [
             <div
                 name={name}
@@ -63,6 +62,7 @@ const Navbar = ({ onClick, children, mainRefs, sections }) => {
     return (
         <div
             className="Navbar"
+            ref={navRef}
             style={{
                 position: "fixed",
                 width: "100vw",
