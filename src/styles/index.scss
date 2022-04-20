@@ -2,7 +2,7 @@
     font-size: 18px;
     font-family: "Open Sans";
     --text-primary: #7fc8f8;
-    --text-secondary: #DC7F9B ;
+    --text-secondary: #dc7f9b;
     --bg-primary: #0e1c36;
     --bg-secondary: #52489c;
     --wild-color: #faebd7;
@@ -31,14 +31,17 @@ body {
     width: 10px;
     height: 0px;
 }
+
 ::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px grey;
     border-radius: 10px;
 }
+
 ::-webkit-scrollbar-thumb {
     background: #40ffff;
     border-radius: 10px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
     background: aqua;
 }
@@ -50,35 +53,33 @@ body {
     background: var(--bg-primary);
     color: var(--text-primary);
     /* z-index: 100; */
-}
 
-.Navbar div {
-    padding: 20px 40px;
-    margin: 0 auto;
-    cursor: pointer;
-    border-radius: 15px;
-    z-index: 999999 !important;
-}
+    .Selected {
+        color: var(--wild-color);
+    }
 
-.Navbar div:hover {
-    background-color: var(--bg-secondary);
-}
+    .logo {
+        padding: 0;
+        width: 40px;
+        height: 40px;
+        transition: 2s ease-in-out;
 
-.Navbar .Selected{
-    color: var(--wild-color);
+        &:hover {
+            background-color: rgba(31, 255, 1, 0);
+            transform: rotate(180deg);
+        }
+    }
 
-}
-
-.Navbar .logo {
-    padding: 0;
-    width: 40px;
-    height: 40px;
-    transition: 2s ease-in-out;
-}
-
-.Navbar .logo:hover {
-    background-color: rgb(31, 255, 1, 0);
-    transform: rotate(180deg);
+    div {
+        padding: 20px 40px;
+        margin: 0 auto;
+        cursor: pointer;
+        border-radius: 15px;
+        z-index: 999999 !important;
+        &:hover {
+            background-color: var(--bg-secondary);
+        }
+    }
 }
 
 main {

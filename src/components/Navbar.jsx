@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 
-const NavbarElement = ({ sections, onClick, NavbarElemRefs }) => {
+const NavbarElement = ({ sections, onClick }) => {
     const func = (e) =>{
         console.log(e)
     }
@@ -62,7 +62,7 @@ const Navbar = ({ onClick, children, mainRefs, sections }) => {
     return (
         <div
             className="Navbar"
-            ref={navRef}
+            // ref={navRef}
             style={{
                 position: "fixed",
                 width: "100vw",
