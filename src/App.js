@@ -4,6 +4,8 @@ import Home from "./components/pages/Home";
 import About from "./components/pages/AboutMe";
 import Section1 from "./components/pages/Section1";
 
+//TODO create a new branch and switch to typescript
+
 function App() {
     useEffect(() => {
         document.title = "Daniel's Website";

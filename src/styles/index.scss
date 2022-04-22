@@ -1,3 +1,8 @@
+* {
+    margin: 0;
+    max-width: 100%;
+}
+
 :root {
     font-size: 18px;
     font-family: "Open Sans";
@@ -11,12 +16,6 @@
 ::selection {
     background-color: cyan;
 }
-
-* {
-    margin: 0;
-    max-width: 100%;
-}
-
 .App {
     background-color: var(--wild-color);
     height: 400vh;

@@ -2,7 +2,9 @@ import React, { useTransition } from "react";
 import Section from "../Section";
 import portrait from "../../images/portrait.png";
 
-//TODO use only one image with a css 
+//TODO use only one image with a css, tooo hard for past me to figure out, good luck future me
+//TODO translate, breaks fixed position for some reason and no one bothers to fix it :(
+//TODO FIX: the image shouldn't be a child to the div, it should have it's own properties and add it as a child to the div for the sticky effect
 
 const About = ({ sections }) => {
     return (
@@ -26,8 +28,6 @@ const About = ({ sections }) => {
             <img
                     src={portrait}
                     style={{
-                        //? The image is not directly on the div because it is translated 50%
-                        //TODO use only one image, that might be too hard                        
                         position: "fixed",
                         zIndex: 9,
                         width: "50vh",
@@ -40,6 +40,7 @@ const About = ({ sections }) => {
                 />
 
             <div
+                className="container"
                 style={{
                     zIndex: 1,
                     position: "absolute",
@@ -53,6 +54,7 @@ const About = ({ sections }) => {
             >
                 <img
                     src={portrait}
+                    id="below"
                     style={{
                         //? The image is not directly on the div because it is translated 50%
                         position: "sticky",
