@@ -7,6 +7,7 @@ const NavbarElement = ({ sections, onClick }) => {
     //TODO change nav bar so it's called by Section.jsx, will make it easier to set up refs in the elements
     //TODO could also just reformat his code
     //TODO The real answer is to reformat the code Section.jsx is called TOO much to do it properly
+    //TODO Center the nav elements...but better
     //TODO use componentDidMount
 
     const navElementList = sections.map(function ({ name, key, addClassName }) {
@@ -32,7 +33,7 @@ const Navbar = ({ onClick, children, mainRefs, sections }) => {
     const [scrollY, setScrollY] = useState(window.scrollY);
     // var a = 0
     const resize = () => {
-        //! The counter bellow shows a weird glitch
+        //! The counter comment below shows a weird glitch
         //! resize is called a lot of each scroll
         // a++
         // console.log(a)
