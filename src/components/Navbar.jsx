@@ -34,6 +34,7 @@ const NavbarElement = ({ sections, onClick }) => {
 }
 
 */
+
     const navElementList = sections.map(function ({ name, key, addClassName }) {
         return [
             <div
@@ -56,19 +57,23 @@ const Navbar = ({ onClick, children, mainRefs, sections }) => {
     const [viewHeight, setViewHeight] = useState(window.visualViewport.height);
     const [scrollY, setScrollY] = useState(window.scrollY);
     // const image = sections[1].ref.current.children[1].children[0]
-    const [image, setImage] = useState(null);
+    
+    var thisImg = null;
+        
+    //    const [thisImg, setImage] = useState(null)
+    
 
     const switchImageDisplayProp = (setAbove) => {
         //TODO figure out a way of putting var image at the top as a const
-        if (image == null) {
-            setImage("sections[1].ref.current.children[1].children[0]");
-            console.log("once", image);
+        if (thisImg == null) {
+            thisImg = sections[1].ref.current.children[1].children[0];
         }
 
         if (setAbove == undefined) {
-            console.log(setAbove);
+            console.error("Please setAbove to a boolean");
             return;
         }
+
         if (setAbove) {
             // remove it as a child and set prop to fixed
             // sections[1].ref.current.lastElementChild.children[0]
