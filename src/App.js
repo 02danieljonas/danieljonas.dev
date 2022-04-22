@@ -41,7 +41,7 @@ function App() {
                 onClick={scrollToRef}
                 sections={sections}
                 mainRefs={mainRefs}
-            ></Navbar>
+            />
         </div>
     );
 }

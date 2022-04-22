@@ -25,20 +25,6 @@ const About = ({ sections }) => {
                 amet gravida sem ultricies.
             </div>
             
-            <img
-                    src={portrait}
-                    style={{
-                        position: "fixed",
-                        zIndex: 9,
-                        width: "50vh",
-                        top: "50vh",
-                        left: "50vw",
-                        margin: "0 auto",
-                        transform: "translate(-50%, -50%)",
-                        aspectRatio: "1/1",
-                    }}
-                />
-
             <div
                 className="container"
                 style={{
@@ -58,6 +44,7 @@ const About = ({ sections }) => {
                     style={{
                         //? The image is not directly on the div because it is translated 50%
                         position: "sticky",
+                        // display
                         width: "50vh",
                         top: "50vh",
                         margin: "0 auto",
@@ -65,6 +52,7 @@ const About = ({ sections }) => {
                     }}
                 />
             </div>
+            <div></div>
             
         </Section>
     );
