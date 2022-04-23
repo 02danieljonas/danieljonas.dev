@@ -7,6 +7,8 @@ import portrait from "../../images/portrait.png";
 //TODO FIX: the image shouldn't be a child to the div, it should have it's own properties and add it as a child to the div for the sticky effect
 
 const About = ({ sections }) => {
+                /* Talk about all of the hardship involved with making this
+             */
     return (
         <Section name="About Me" listOrder="1" sections={sections}>
             <div>
@@ -24,7 +26,23 @@ const About = ({ sections }) => {
                 vel facilisis. Quisque sagittis mauris id turpis faucibus, sit
                 amet gravida sem ultricies.
             </div>
-            
+
+            <img
+                    src={portrait}
+                    style={{
+                        //? The image is not directly on the div because it is translated 50%
+                        //TODO use only one image, that might be too hard                        
+                        position: "fixed",
+                        zIndex: 9,
+                        width: "50vh",
+                        top: "50vh",
+                        left: "50vw",
+                        margin: "0 auto",
+                        transform: "translate(-50%, -50%)",
+                        aspectRatio: "1/1",
+                    }}
+                />
+
             <div
                 className="container"
                 style={{
@@ -52,8 +70,10 @@ const About = ({ sections }) => {
                     }}
                 />
             </div>
-            <div></div>
-            
+            {/* <div>
+                <details></details>
+                <footer></footer>
+            </div> */}
         </Section>
     );
 };

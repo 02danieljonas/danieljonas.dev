@@ -57,22 +57,32 @@ const Navbar = ({ onClick, children, mainRefs, sections }) => {
     const [viewHeight, setViewHeight] = useState(window.visualViewport.height);
     const [scrollY, setScrollY] = useState(window.scrollY);
     // const image = sections[1].ref.current.children[1].children[0]
+
+    //Add a ref here
+    // console.log("Hey")
+
     
-    var thisImg = null;
+    // var thisImg = null;
         
     //    const [thisImg, setImage] = useState(null)
     
 
     const switchImageDisplayProp = (setAbove) => {
         //TODO figure out a way of putting var image at the top as a const
-        if (thisImg == null) {
-            thisImg = sections[1].ref.current.children[1].children[0];
-        }
 
         if (setAbove == undefined) {
             console.error("Please setAbove to a boolean");
             return;
         }
+
+    console.log("1", typeof thisImg)
+
+        if (typeof thisImg == typeof thisImgs) {
+            console.log("Passed")
+            const thisImg = sections[1].ref.current.children[1].children[0];
+    }
+    console.log("2", typeof thisImg)
+
 
         if (setAbove) {
             // remove it as a child and set prop to fixed
@@ -103,25 +113,25 @@ const Navbar = ({ onClick, children, mainRefs, sections }) => {
 
         if (viewHeight - scrollY > 70) {
             setHeight(viewHeight - scrollY);
-            // sections[1].ref.current.lastChild.previousSibling.style.display =
-            //     "revert"; //should be revert
-            // sections[1].ref.current.lastElementChild.children[0].style.display =
-            //     "none"; //should be none
-            switchImageDisplayProp(false);
+            sections[1].ref.current.lastChild.previousSibling.style.display =
+                "revert"; //should be revert
+            sections[1].ref.current.lastElementChild.children[0].style.display =
+                "none"; //should be none
+            // switchImageDisplayProp(false);
         } else {
             setHeight(70);
-            // sections[1].ref.current.lastChild.previousSibling.style.display =
-            //     "none";
-            // sections[1].ref.current.lastElementChild.children[0].style.display =
-            //     "revert";
-            switchImageDisplayProp(false);
+            sections[1].ref.current.lastChild.previousSibling.style.display =
+                "none";
+            sections[1].ref.current.lastElementChild.children[0].style.display =
+                "revert";
+            // switchImageDisplayProp(false);
         }
         mainRefs.current.style.paddingTop = "100vh";
         //TODO looks for AboutMe and changes size accordingly
     };
 
     window.addEventListener("scroll", resize);
-    // window.addEventListener("resize", resize);
+    window.addEventListener("resize", resize);
 
     const NavbarElemRefs = [];
 
