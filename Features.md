@@ -2,6 +2,8 @@
 - [ ] an info icon to tell the users about the page and how's it's made
    - position at the bottom of the screen, or in the navbar
 - [ ] a loading animation
+- [ ] lazy loading on images
+- [ ] figure out submodules
 
 ### Navbar: 
 - [ ] the Divs spin/move around
