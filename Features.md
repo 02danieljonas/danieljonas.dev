@@ -9,7 +9,7 @@
 - [ ] the Divs spin/move around
    - hovering on one stops all movement
    - divs move if user hovers over image
-   - change logo to svg
+- [ ] change logo to svg
 
 ### About Me:
 - [ ] First load everything in this page should look like it's being typed
