@@ -26,22 +26,19 @@ const About = ({ sections }) => {
                 vel facilisis. Quisque sagittis mauris id turpis faucibus, sit
                 amet gravida sem ultricies.
             </div>
+            <details>
+                I made this section very annoying for myself, the current version works by switching between two images and I tried my hardest to only use one image and that caused lots of headaches and I ended up not **actively** touching this for like 2-3 days
+                I've decided to just keep the 2 image system, this is meant to be fun, not stressful
+            </details>
+
+
+
 
             <img
                     src={portrait}
-                    style={{
-                        //? The image is not directly on the div because it is translated 50%
-                        //TODO use only one image, that might be too hard                        
-                        position: "fixed",
-                        zIndex: 9,
-                        width: "50vh",
-                        top: "50vh",
-                        left: "50vw",
-                        margin: "0 auto",
-                        transform: "translate(-50%, -50%)",
-
-                        aspectRatio: "1/1",
-                    }}
+                    id="imageAbove"
+                    //     //? The image is not directly on the div because it is translated 50%
+                    //     //TODO use only one image, that might be too hard                        
                 />
 
             <div
@@ -54,21 +51,12 @@ const About = ({ sections }) => {
                     transform: "translate(-50%, 0%)",
                     height: "100vh",
                     width: "50vh",
-                    // backgroundColor: "green",
                 }}
             >
                 <img
                     src={portrait}
-                    id="below"
-                    style={{
-                        //? The image is not directly on the div because it is translated 50%
-                        position: "sticky",
-                        // display
-                        width: "50vh",
-                        top: "50vh",
-                        margin: "0 auto",
-                        transform: "translate(0%, -50%)",
-                    }}
+                    id="imageBelow"
+                    //? The image is not directly on the div because it is translated 50%
                 />
             </div>
             {/* <div>

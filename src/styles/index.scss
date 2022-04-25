@@ -92,3 +92,24 @@ main {
 section {
     padding-top: 80px;
 }
+
+#imageAbove{
+    position: fixed;
+    z-index: 9;
+    width: 50vh;
+    top: 50vh;
+    left: 50vw;
+    margin: 0 auto;
+    transform: translate(-50%, -50%);
+    aspect-ratio: 1/1;
+    display: none;
+}
+
+#imageBelow{
+    position: sticky;
+    // display
+    width: 50vh;
+    top: 50vh;
+    margin: 0 auto;
+    transform: translate(0%, -50%);
+}

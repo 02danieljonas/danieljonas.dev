@@ -28,73 +28,32 @@ const Navbar = ({ onClick, children, mainRefs, sections }) => {
     const [height, setHeight] = useState("100vh");
     const [viewHeight, setViewHeight] = useState(window.visualViewport.height);
     const [scrollY, setScrollY] = useState(window.scrollY);
-    // const image = sections[1].ref.current.children[1].children[0]
 
-    //Add a ref here
-    // console.log("Hey")
-
-    // var thisImg = null;
-
-    //    const [thisImg, setImage] = useState(null)
-
-    const switchImageDisplayProp = (setAbove) => {
-        //TODO figure out a way of putting var image at the top as a const
-
-        if (setAbove == undefined) {
-            console.error("Please setAbove to a boolean");
-            return;
-        }
-
-        console.log("1", typeof thisImg);
-
-        if (typeof thisImg == typeof thisImgs) {
-            console.log("Passed");
-            const thisImg = sections[1].ref.current.children[1].children[0];
-        }
-        console.log("2", typeof thisImg);
-
-        if (setAbove) {
-            // remove it as a child and set prop to fixed
-            // sections[1].ref.current.lastElementChild.children[0]
-            console.log(true);
-        } else {
-            // add it as a child and set prop to sticky
-            //sections[1].ref.current.lastElementChild
-            // console.log("Before", sections[1].ref.current.children[1])
-
-            var t = sections[1].ref.current.children[1].children[0];
-            sections[1].ref.current.children[1].removeChild(t);
-            // console.log("After", sections[1].ref.current.children[1].children)
-
-            sections[1].ref.current.children[1].appendChild(t);
-        }
-    };
     useEffect(() => {
         const resize = () => {
             setViewHeight(window.visualViewport.height);
             setScrollY(window.scrollY);
+            //TODO I should set these up so they aren't called that much
             if (viewHeight - scrollY > 70) {
                 setHeight(viewHeight - scrollY);
+
                 sections[1].ref.current.lastChild.previousSibling.style.display =
-                    "revert"; //should be revert
+                "revert"; //should be revert
                 sections[1].ref.current.lastElementChild.children[0].style.display =
-                    "none"; //should be none
-                // switchImageDisplayProp(false);
+                "none"; //should be none
             } else {
                 setHeight(70);
                 sections[1].ref.current.lastChild.previousSibling.style.display =
                     "none";
                 sections[1].ref.current.lastElementChild.children[0].style.display =
                     "revert";
-                // switchImageDisplayProp(false);
             }
             mainRefs.current.style.paddingTop = "100vh";
-            //TODO looks for AboutMe and changes size accordingly
+            //TODO fix: on reload the image values are set wrong until scroll
         };
-
         window.addEventListener("scroll", resize);
         window.addEventListener("resize", resize);
-    }, [window.visualViewport.height-window.scrollY  > 70 ]);
+    }, [window.visualViewport.height - window.scrollY > 70 /*, above*/]);
 
     const NavbarElemRefs = [];
 
