@@ -34,7 +34,7 @@ const About = ({ sections }) => {
                         //TODO use only one image, that might be too hard                        
                         position: "fixed",
                         zIndex: 9,
-                        width: "50vh",
+                        width: "50vw",
                         top: "50vh",
                         left: "50vw",
                         margin: "0 auto",
@@ -52,7 +52,7 @@ const About = ({ sections }) => {
                     left: "50vw",
                     transform: "translate(-50%, 0%)",
                     height: "100vh",
-                    width: "50vh",
+                    width: "50vw",
                     // backgroundColor: "green",
                 }}
             >
@@ -63,7 +63,7 @@ const About = ({ sections }) => {
                         //? The image is not directly on the div because it is translated 50%
                         position: "sticky",
                         // display
-                        width: "50vh",
+                        width: "50vw",
                         top: "50vh",
                         margin: "0 auto",
                         transform: "translate(0%, -50%)",

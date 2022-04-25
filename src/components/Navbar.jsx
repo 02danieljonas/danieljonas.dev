@@ -1,39 +1,11 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 const NavbarElement = ({ sections, onClick }) => {
     //TODO change nav bar so it's called by Section.jsx, will make it easier to set up refs in the elements
-    //TODO could also just reformat his code
+    //TODO could also just reformat this code
     //TODO The real answer is to reformat the code Section.jsx is called TOO much to do it properly
-    //TODO Center the nav elements...but better
-    /* 
-    TODO use componentDidMount... ->
-    .useEffect(() => {
-    .Update the document title using the browser API
-    .document.title = `You clicked ${count} times`;
-    .});
-
-    import React, { useState, useEffect } from 'react';
-
-    function Example() {
-        const [count, setCount] = useState(0);
-
-    -Similar to componentDidMount and componentDidUpdate:
-    useEffect(() => {
-        -Update the document title using the browser API
-        document.title = `You clicked ${count} times`;
-    });
-
-    return (
-        <div>
-            <p>You clicked {count} times</p>
-            <button onClick={() => setCount(count + 1)}>
-                Click me
-            </button>
-        </div>
-    );
-}
-
-*/
+    //TODO// Center the nav elements...but better
+    //TODO Set all other nav elems in a seperate div and make the home screen a special use case AKA reformate this code
 
     const navElementList = sections.map(function ({ name, key, addClassName }) {
         return [
@@ -61,11 +33,9 @@ const Navbar = ({ onClick, children, mainRefs, sections }) => {
     //Add a ref here
     // console.log("Hey")
 
-    
     // var thisImg = null;
-        
+
     //    const [thisImg, setImage] = useState(null)
-    
 
     const switchImageDisplayProp = (setAbove) => {
         //TODO figure out a way of putting var image at the top as a const
@@ -75,14 +45,13 @@ const Navbar = ({ onClick, children, mainRefs, sections }) => {
             return;
         }
 
-    console.log("1", typeof thisImg)
+        console.log("1", typeof thisImg);
 
         if (typeof thisImg == typeof thisImgs) {
-            console.log("Passed")
+            console.log("Passed");
             const thisImg = sections[1].ref.current.children[1].children[0];
-    }
-    console.log("2", typeof thisImg)
-
+        }
+        console.log("2", typeof thisImg);
 
         if (setAbove) {
             // remove it as a child and set prop to fixed
@@ -100,38 +69,32 @@ const Navbar = ({ onClick, children, mainRefs, sections }) => {
             sections[1].ref.current.children[1].appendChild(t);
         }
     };
+    useEffect(() => {
+        const resize = () => {
+            setViewHeight(window.visualViewport.height);
+            setScrollY(window.scrollY);
+            if (viewHeight - scrollY > 70) {
+                setHeight(viewHeight - scrollY);
+                sections[1].ref.current.lastChild.previousSibling.style.display =
+                    "revert"; //should be revert
+                sections[1].ref.current.lastElementChild.children[0].style.display =
+                    "none"; //should be none
+                // switchImageDisplayProp(false);
+            } else {
+                setHeight(70);
+                sections[1].ref.current.lastChild.previousSibling.style.display =
+                    "none";
+                sections[1].ref.current.lastElementChild.children[0].style.display =
+                    "revert";
+                // switchImageDisplayProp(false);
+            }
+            mainRefs.current.style.paddingTop = "100vh";
+            //TODO looks for AboutMe and changes size accordingly
+        };
 
-    // var a = 0;
-    const resize = () => {
-        //! The counter comment below shows a weird glitch
-        //! resize is called a lot of each scroll
-        //! Make a stackoverflow post about it
-        // a++;
-        // console.log(a);
-        setViewHeight(window.visualViewport.height);
-        setScrollY(window.scrollY);
-
-        if (viewHeight - scrollY > 70) {
-            setHeight(viewHeight - scrollY);
-            sections[1].ref.current.lastChild.previousSibling.style.display =
-                "revert"; //should be revert
-            sections[1].ref.current.lastElementChild.children[0].style.display =
-                "none"; //should be none
-            // switchImageDisplayProp(false);
-        } else {
-            setHeight(70);
-            sections[1].ref.current.lastChild.previousSibling.style.display =
-                "none";
-            sections[1].ref.current.lastElementChild.children[0].style.display =
-                "revert";
-            // switchImageDisplayProp(false);
-        }
-        mainRefs.current.style.paddingTop = "100vh";
-        //TODO looks for AboutMe and changes size accordingly
-    };
-
-    window.addEventListener("scroll", resize);
-    window.addEventListener("resize", resize);
+        window.addEventListener("scroll", resize);
+        window.addEventListener("resize", resize);
+    }, [window.visualViewport.height-window.scrollY  > 70 ]);
 
     const NavbarElemRefs = [];
 
