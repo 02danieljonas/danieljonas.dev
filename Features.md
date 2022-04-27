@@ -52,6 +52,7 @@
 
 ### Admin Page
 - [ ] a page to add and remove from all the databases
+- [ ] add two factor authentication and other security methods
 
 ### no script
 - [ ] show the a basic resume
