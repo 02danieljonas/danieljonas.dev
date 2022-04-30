@@ -1,3 +1,11 @@
+# Verion 2.0.0:
+- [ ] finalized NavBar
+- [ ] finalized AboutMe
+- [ ] info icon on sections
+- [ ] AWS Infrastructure
+
+
+
 ### Miscellaneous
 - [ ] an info icon to tell the users about the page and how's it's made
    - position at the bottom of the screen, or in the navbar
