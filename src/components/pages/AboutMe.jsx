@@ -7,10 +7,13 @@ import portrait from "../../images/portrait.png";
 //TODO FIX: the image shouldn't be a child to the div, it should have it's own properties and add it as a child to the div for the sticky effect
 
 const About = ({ sections }) => {
+    const info=
+    `I made this section very annoying for myself, the current version works by switching between two images and I tried my hardest to only use one image and that caused lots of headaches and I ended up not **actively** touching this for like 2-3 days
+    I've decided to just keep the 2 image system, this is meant to be fun, not stressful`
                 /* Talk about all of the hardship involved with making this
              */
     return (
-        <Section name="About Me" listOrder="1" sections={sections}>
+        <Section name="About Me" listOrder="1" sections={sections} info={info}>
             <div>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
                 nec vestibulum nunc. Vestibulum fringilla enim ut porttitor
@@ -26,10 +29,7 @@ const About = ({ sections }) => {
                 vel facilisis. Quisque sagittis mauris id turpis faucibus, sit
                 amet gravida sem ultricies.
             </div>
-            <details>
-                I made this section very annoying for myself, the current version works by switching between two images and I tried my hardest to only use one image and that caused lots of headaches and I ended up not **actively** touching this for like 2-3 days
-                I've decided to just keep the 2 image system, this is meant to be fun, not stressful
-            </details>
+
 
 
 

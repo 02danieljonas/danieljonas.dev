@@ -54,15 +54,6 @@ body {
 }
 
 .Navbar {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: space-evenly;
-      -ms-flex-pack: space-evenly;
-          justify-content: space-evenly;
   background: var(--bg-primary);
   color: var(--text-primary);
   /* z-index: 100; */
@@ -74,13 +65,22 @@ body {
 
 .Navbar div {
   padding: 20px 40px;
-  margin: 0 auto;
   cursor: pointer;
   border-radius: 15px;
   z-index: 999999 !important;
 }
 
 .Navbar div:hover {
+  background-color: var(--bg-secondary);
+}
+
+.Navbar span {
+  padding: 20px 40px;
+  border-radius: 15px;
+  z-index: 999999 !important;
+}
+
+.Navbar span:hover {
   background-color: var(--bg-secondary);
 }
 

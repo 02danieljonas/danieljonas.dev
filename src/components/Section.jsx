@@ -8,15 +8,16 @@ const Section = ({
     style,
     image, //if an image is passed the image is put on the nav bar instead of {name}
     addClassName,
+    info,
     sections, //a list to keep all of the info for the section
 }) => {
-    sections[listOrder] = 
-        {
-            key: listOrder, //merge this--
-            ref: useRef(null),
-            name: image != null ? image : name,
-            addClassName: addClassName,
-        };
+    sections[listOrder] = {
+        key: listOrder, //merge this--
+        ref: useRef(null),
+        name: image != null ? image : name,
+        addClassName: addClassName,
+        info: info,
+    };
 
     return (
         <section
@@ -26,6 +27,8 @@ const Section = ({
             className={sections[listOrder].addClassName}
             style={style}
         >
+
+            {/* <dialog>{info}</dialog> */}
             {children}
         </section>
     );

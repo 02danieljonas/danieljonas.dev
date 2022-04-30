@@ -1,31 +1,60 @@
 import React, { useState, useRef, useEffect } from "react";
+import { FaInfoCircle } from "react-icons/fa";
+//put the info ar the top right of the screen
 
-const NavbarElement = ({ sections, onClick }) => {
-//TODO reformat this code so setting the style could be doene more effectively
-    const navElementList = sections.map(function ({ name, key, addClassName }) {
-        return [
-            <div
-                name={name}
-                id={key}
-                key={key}
-                onClick={onClick}
-                className={addClassName}
+const NavbarElement = ({ sections, onClick, navRef }) => {
+    /*
+    TODO I THINK:
+    .on scroll the scroll bar is realized only after it is used and it causes the elements to shift 10 pixels
+    */
+    // // useEffect(() => {
+    //     const navElementList1 = [];
+    //     const pegLength = window.visualViewport.width / sections.length;
+
+    //     // console.log(window.visualViewport.width);
+    //     for (let i = 0; i < sections.length; i++) {
+    //         try{
+    //         console.log("navRef.current.height/2", navRef.current.height/2)
+    //         console.log("navRef.current", navRef.current)
+
+    //         navElementList1.push([
+    //             <span
+    //                 name={sections[i].name}
+    //                 id={sections[i].key}
+    //                 key={sections[i].key}
+    //                 onClick={onClick}
+    //                 className={sections[i].addClassName}
+    //                 info={window.visualViewport.width}
+    //                 style={{
+    //                     position: "absolute",
+    //                     left: pegLength * i + pegLength / 2,
+    //                     top: navRef.current.height/2,
+    //                     cursor: "pointer",
+    //                     transform: "translate(-50%, -50%)",
+    //                 }}
+    //             >
+    //                 {sections[i].name}
+    //             </span>,
+    //         ]);
+    //     }catch{}
+    //     }
 
 
-                // style={{
-                //     top: "20px",
-                //     bottom: "20px"
-                // }}
-
-            >
-                {name}
-            </div>,
-        ];
-    });
-
-    // console.log(navElementList)
-
-    return <>{navElementList}</>;
+        const navElementList = sections.map(function ({ name, key, addClassName }) {
+            return [
+                <div
+                    name={name}
+                    id={key}
+                    key={key}
+                    onClick={onClick}
+                    className={addClassName}
+                >
+                    {name}
+                </div>,
+            ];
+        });
+        return <>{navElementList}</>;
+    // }, []);
 };
 
 const Navbar = ({ onClick, children, mainRefs, sections }) => {
@@ -42,9 +71,9 @@ const Navbar = ({ onClick, children, mainRefs, sections }) => {
                 setHeight(viewHeight - scrollY);
 
                 sections[1].ref.current.lastChild.previousSibling.style.display =
-                "revert"; //should be revert
+                    "revert"; //should be revert
                 sections[1].ref.current.lastElementChild.children[0].style.display =
-                "none"; //should be none
+                    "none"; //should be none
             } else {
                 setHeight(70);
                 sections[1].ref.current.lastChild.previousSibling.style.display =
@@ -58,13 +87,15 @@ const Navbar = ({ onClick, children, mainRefs, sections }) => {
         window.addEventListener("scroll", resize);
         window.addEventListener("resize", resize);
     }, [window.visualViewport.height - window.scrollY > 70 /*, above*/]);
+    // const NavbarElemRefs = [];
 
-    const NavbarElemRefs = [];
+    const [navRef, setNavRef] = useState(useRef(null));
 
+    // const navRef = useRef(null)
     return (
         <div
             className="Navbar"
-            // ref={navRef}
+            ref={navRef}
             style={{
                 position: "fixed",
                 width: "100vw",
@@ -78,10 +109,25 @@ const Navbar = ({ onClick, children, mainRefs, sections }) => {
                 // transition: "1s",
             }}
         >
+            <FaInfoCircle
+                style={{
+                    position: "fixed",
+                    zIndex: 999,
+                    color: "red",
+                    top: "35px",
+                    right: "1rem",
+                    cursor: "pointer",
+                    transform: "translate(-50%, -50%)",
+                }}
+                onClick={() => {
+                    console.log(sections[1].info);
+                }}
+            />
+
             <NavbarElement
                 sections={sections}
                 onClick={onClick}
-                NavbarElemRefs={NavbarElemRefs}
+                navRef = {navRef}
             />
             {children}
         </div>
