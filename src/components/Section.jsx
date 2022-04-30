@@ -8,7 +8,7 @@ const Section = ({
     style,
     image, //if an image is passed the image is put on the nav bar instead of {name}
     addClassName,
-    sections,
+    sections, //a list to keep all of the info for the section
 }) => {
     sections[listOrder] = 
         {

@@ -1,12 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 
 const NavbarElement = ({ sections, onClick }) => {
-    //TODO change nav bar so it's called by Section.jsx, will make it easier to set up refs in the elements
-    //TODO could also just reformat this code
-    //TODO The real answer is to reformat the code Section.jsx is called TOO much to do it properly
-    //TODO// Center the nav elements...but better
-    //TODO Set all other nav elems in a seperate div and make the home screen a special use case AKA reformate this code
-
+//TODO reformat this code so setting the style could be doene more effectively
     const navElementList = sections.map(function ({ name, key, addClassName }) {
         return [
             <div
@@ -15,11 +10,20 @@ const NavbarElement = ({ sections, onClick }) => {
                 key={key}
                 onClick={onClick}
                 className={addClassName}
+
+
+                // style={{
+                //     top: "20px",
+                //     bottom: "20px"
+                // }}
+
             >
                 {name}
             </div>,
         ];
     });
+
+    // console.log(navElementList)
 
     return <>{navElementList}</>;
 };
