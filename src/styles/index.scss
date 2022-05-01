@@ -82,35 +82,32 @@ body {
         z-index: 999999 !important;
         &:hover {
             background-color: var(--bg-secondary);
-
-            
         }
         .logo {
             padding: 0;
             width: 40px;
             height: 40px;
             transition: 2s ease-in-out;
-    
+
             &:hover {
                 background-color: rgba(31, 255, 1, 0);
                 transform: rotate(180deg);
             }
-    
-    }
+        }
 
-    .logo {
-        padding: 0;
-        width: 40px;
-        height: 40px;
-        transition: 2s ease-in-out;
+        .logo {
+            padding: 0;
+            width: 40px;
+            height: 40px;
+            transition: 2s ease-in-out;
 
-        &:hover {
-            background-color: rgba(31, 255, 1, 0);
-            transform: rotate(180deg);
+            &:hover {
+                background-color: rgba(31, 255, 1, 0);
+                transform: rotate(180deg);
+            }
         }
     }
 }
-
 main {
     top: 100vh;
 }
@@ -119,7 +116,7 @@ section {
     padding-top: 80px;
 }
 
-#imageAbove{
+#imageAbove {
     position: fixed;
     z-index: 9;
     width: 50vh;
@@ -131,9 +128,8 @@ section {
     display: none;
 }
 
-#imageBelow{
+#imageBelow {
     position: sticky;
-    // display
     width: 50vh;
     top: 50vh;
     margin: 0 auto;
