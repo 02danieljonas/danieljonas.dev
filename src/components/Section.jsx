@@ -10,6 +10,7 @@ const Section = ({
     addClassName,
     info,
     sections, //a list to keep all of the info for the section
+    importantRef,
 }) => {
     sections[listOrder] = {
         key: listOrder, //merge this--

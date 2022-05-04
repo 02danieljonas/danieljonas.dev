@@ -64,50 +64,29 @@ body {
         color: var(--wild-color);
     }
 
-    div {
-        padding: 20px 40px;
-        max-height: 30px;
-        margin: 0 auto;
-        cursor: pointer;
-        border-radius: 15px;
-        z-index: 999999 !important;
-        &:hover {
-            background-color: var(--bg-secondary);
-        }
-    }
-
     span {
         padding: 20px 40px;
         border-radius: 15px;
-        z-index: 999999 !important;
+        z-index: 9 !important;
+    
         &:hover {
             background-color: var(--bg-secondary);
         }
-        .logo {
-            padding: 0;
-            width: 40px;
-            height: 40px;
-            transition: 2s ease-in-out;
-
-            &:hover {
-                background-color: rgba(31, 255, 1, 0);
-                transform: rotate(180deg);
-            }
-        }
-
-        .logo {
-            padding: 0;
-            width: 40px;
-            height: 40px;
-            transition: 2s ease-in-out;
-
-            &:hover {
-                background-color: rgba(31, 255, 1, 0);
-                transform: rotate(180deg);
-            }
+    }
+    .logo {
+        padding: 0;
+        width: 40px;
+        height: 40px;
+        transition: 2s ease-in-out;
+        &:hover {
+            background-color: rgba(31, 255, 1, 0);
+            transform: rotate(180deg);
         }
     }
-}
+
+    }
+
+
 main {
     top: 100vh;
 }
@@ -118,7 +97,7 @@ section {
 
 #imageAbove {
     position: fixed;
-    z-index: 9;
+    z-index: 3;
     width: 50vh;
     top: 50vh;
     left: 50vw;
@@ -134,4 +113,8 @@ section {
     top: 50vh;
     margin: 0 auto;
     transform: translate(0%, -50%);
+}
+
+.hidden{
+    display: none;
 }
