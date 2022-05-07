@@ -63,16 +63,27 @@ body {
     .Selected {
         color: var(--wild-color);
     }
-
     span {
         padding: 20px 40px;
+        max-height: 30px;
+        margin: 0 auto;
+        cursor: pointer;
         border-radius: 15px;
         z-index: 9 !important;
-    
         &:hover {
             background-color: var(--bg-secondary);
         }
     }
+
+    // span {
+    //     padding: 20px 40px;
+    //     border-radius: 15px;
+    //     z-index: 9 !important;
+    
+    //     &:hover {
+    //         background-color: var(--bg-secondary);
+    //     }
+    // }
     .logo {
         padding: 0;
         width: 40px;

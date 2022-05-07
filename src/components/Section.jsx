@@ -18,6 +18,7 @@ const Section = ({
         name: image != null ? image : name,
         addClassName: addClassName,
         info: info,
+        importantRef: importantRef,
     };
 
     return (

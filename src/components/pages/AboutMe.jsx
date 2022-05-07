@@ -1,16 +1,13 @@
-import React, { useTransition } from "react";
+import React from "react";
 import Section from "../Section";
 import portrait from "../../images/portrait.png";
 import { useEffect } from "react";
+import { useRef } from "react";
 //I feel like this programming thing is a drug
 //You get into it, get all the happiness signals from your brain in the beginning
 //then the drawbacks starts to take efffect, sleepless nights, stress, bad mood for a bit of domine when you get another hit/ completed that part of the programing
 //just to start the loop again
 // I hate and love programming
-
-//TODO use only one image with a css, tooo hard for past me to figure out, good luck future me
-//TODO translate, breaks fixed position for some reason and no one bothers to fix it :(
-//TODO FIX: the image shouldn't be a child to the div, it should have it's own properties and add it as a child to the div for the sticky effect
 
 //todo added an importantRef to Sections 
 
@@ -19,17 +16,21 @@ const About = ({ sections }) => {
     I've decided to just keep the 2 image system, this is meant to be fun, not stressful
     oh my god i finaly figured this shit out, college tour gave ne a long break from working on this, because I worked on it everyday and I decided to change something about the container of the image and that ended up with me comming up with the solution for only using one image which is pretty amazing.
     Now the other problem is figuring out a way to change the states responsively for reloading, when scrolled down.
-    
-    `;
+    The trip really hurt my work time though, I can't work on the bus probably a mental thing
+    `; //-talk about scrapping the feature and the time limit that came with it
     
     /* 
     Talk about all of the hardship involved with making this
     */
-    useEffect(() => {
 
+    //- I think i am going to have to scrap the feature in which the image switches zIndexs until later :((((
+    //!look at forwardRef
+
+    // const importantRef = useRef(null)
+    useEffect(() => {
     }, []);
     return (
-        <Section name="AboutMe" listOrder="1" sections={sections} info={info}>
+        <Section name="AboutMe" listOrder="1" sections={sections} info={info} /*ref={importantRef}*/>
             <div>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus
                 nec vestibulum nunc. Vestibulum fringilla enim ut porttitor
@@ -48,22 +49,22 @@ const About = ({ sections }) => {
             <div
                 className="container"
                 style={{
-                    zIndex: 1,
                     position: "absolute",
                     top: "50vh",
                     left: "50vw",
                     transform: "translate(-50%, 0%)",
                     height: "150vh", 
                     width: "50vh",
-                    zIndex:3,
-                        // window.visualViewport.height - window.scrollY > 70
-                        //     ? 3
-                        //     : 9999999999,
+                    zIndex:
+                        window.visualViewport.height - window.scrollY > 70
+                            ? 1
+                            : 1,
                 }}
             >
                 <img
                     src={portrait}
                     id="imageBelow"
+                    alt="My Portrait"
                     //? The image is not directly on the div because it is translated 50%
                 />
             </div>

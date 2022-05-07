@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FaInfoCircle } from "react-icons/fa";
+//! to call things that need to be loaded first try using useRef
 /*
 .highlight the section I am on --->
 .on click of info icon print section name --->
@@ -23,9 +24,8 @@ const NavbarElement = ({ sections, onClick, navRef }) => {
             // console.log("navRef.current.height", navRef.current.height)
             // console.log("navRef.current", navRef.current)
             // console.log(sections[0].name)
-            // console.log(sections[1].name)
+            // console.log(sections[1])
             // console.log(sections[2].name)
-
             navElementList1.push([
                 <span
                     name={sections[i].name}
@@ -34,17 +34,17 @@ const NavbarElement = ({ sections, onClick, navRef }) => {
                     onClick={onClick}
                     className={sections[i].addClassName}
                     info={window.visualViewport.width}
-                    style={{
-                        //TODO fix padding of the image, i have no idea why it's broken, please fix T_T
-                        position: "absolute",
-                        left: pegLength * i + pegLength / 2,
-                        // padding: sections[i].className == "logo"? 0:20,
-                        // boxSizing: "border-box",
-                        // maxHeight: 60.67,
-                        // top: navRef.current.height,
-                        cursor: "pointer",
-                        transform: "translate(-50%, 0%)",
-                    }}
+                    // style={{
+                    //     //TODO fix padding of the image, i have no idea why it's broken, please fix T_T
+                    //     position: "absolute",
+                    //     // left: pegLength * i + pegLength / 2,
+                    //     // padding: sections[i].className == "logo"? 0:20,
+                    //     // boxSizing: "border-box",
+                    //     // maxHeight: 60.67,
+                    //     // top: navRef.current.height,
+                    //     cursor: "pointer",
+                    //     transform: "translate(-50%, 0%)",
+                    // }}
                 >
                     {sections[i].name}
                 </span>,
@@ -85,43 +85,35 @@ const Navbar = ({ onClick, children, mainRefs, sections }) => {
             //.change name to screen update
             setViewHeight(window.visualViewport.height);
             setScrollY(window.scrollY);
-            console.log(
-                "Zero is ",
-                sections[0].ref.current.getBoundingClientRect().y
-            );
-            console.log(
-                "One is ",
-                sections[1].ref.current.getBoundingClientRect().y
-            );
-            for (let i = sections.length - 1; i < 0; i--) {
+            // console.log(
+            //     "Zero is ",
+            //     sections[0].ref.current.getBoundingClientRect().y
+            // );
+            // console.log(
+            //     "One is ",
+            //     sections[1].ref.current.getBoundingClientRect().y
+            // );
+            // console.log(sections.length)
+            // for (let i = 0; i)
+
+            for (let i = sections.length-1; i != -1; i--) {
                 //highlighting positition on navbar
-                console.log(
-                    sections[i].ref.current.getBoundingClientRect().y < 0
-                );
                 if (sections[i].ref.current.getBoundingClientRect().y < 0) {
-                    console.log("This is", sections[i].ref.current);
+                    console.log(sections[i].ref.current.style)
+                    // sections[i].ref.current.style.color = "black"
+
+                    // console.log("This active section is ", sections[i].name);
                     break;
                 }
+                else{
+                    // console.log("This active section is ", sections[i].ref.current.style.color);
+                }
             }
-            sections[1].ref.current.lastChild.style.zIndex =
-                viewHeight - scrollY > 70 ? 3 : 1
-            //the div.style.zindex=z?1:4
-            /*
+            //
+            // sections[1].ref.current.lastChild.style.zIndex =
+            //     viewHeight - scrollY > 70 ? 3 : 1
+            
             //TODO I should set these up so they aren't called that much
-            if (viewHeight - scrollY > 70) {
-                setHeight(viewHeight - scrollY);
-                //TODO: if screen is loaded before
-                sections[1].ref.current.lastChild.previousSibling.style.display =
-                    "revert"; //should be revert
-                sections[1].ref.current.lastElementChild.children[0].style.display =
-                    "none"; //should be none
-            } else {
-                setHeight(70);
-                sections[1].ref.current.lastChild.previousSibling.style.display =
-                    "none";
-                sections[1].ref.current.lastElementChild.children[0].style.display =
-                    "revert";
-            }*/
             mainRefs.current.style.paddingTop = "100vh";
             //TODO fix: on reload the image values are set wrong until scroll
         };
