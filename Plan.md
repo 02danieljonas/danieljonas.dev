@@ -18,6 +18,8 @@
    - hovering on one stops all movement
    - divs move if user hovers over image
 - [ ] change logo to svg
+- [ ] when a section is active, secondary color is used on the nav text
+
 
 ### About Me:
 - [ ] First load everything in this page should look like it's being typed
